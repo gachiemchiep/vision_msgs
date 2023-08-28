@@ -13,6 +13,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 set(msg_files
@@ -25,6 +26,8 @@ set(msg_files
   msg/Detection2D.msg
   msg/Detection3DArray.msg
   msg/Detection3D.msg
+  msg/Instance2D.msg 
+  msg/Instance2DArray.msg 
   msg/LabelInfo.msg
   msg/ObjectHypothesis.msg
   msg/ObjectHypothesisWithPose.msg
@@ -36,7 +39,7 @@ set(msg_files
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
-  DEPENDENCIES std_msgs geometry_msgs
+  DEPENDENCIES std_msgs geometry_msgs sensor_msgs
   ADD_LINTER_TESTS)
 
 install(DIRECTORY include/${PROJECT_NAME}/
